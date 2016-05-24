@@ -12,8 +12,8 @@ class memcached {
     mode => '0644',
   }
   service { 'memcached':
-    ensure => 'running',
-    enable => 'true',
+    ensure => running,
+    enable => true,
     subscribe => File['memcachedconfig'],
   }
 }

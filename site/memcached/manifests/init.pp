@@ -1,6 +1,7 @@
 class memcached {
   package { 'memcached':
-    ensure => present,
+    ensure => '1.4.15-9.e17',
+#    ensure => present,
   }
   file { '/etc/syconfig/memcached':
     ensure => file,

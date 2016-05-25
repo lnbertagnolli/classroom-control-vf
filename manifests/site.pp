@@ -62,6 +62,7 @@ node default {
   include skeleton
   include memcached
   include nginx
+  include aliases
   
   if $::virtual != 'physical'  {
     $vmname = capitalize($::virtual)

@@ -62,10 +62,12 @@ node default {
   include skeleton
   include memcached
   include nginx
+  
   user { 'admin':
     ensure => present,
   }
-
+  include users::admins
+  
   class { 'aliases':
     admin   => 'admin',
     require => User['admin'],

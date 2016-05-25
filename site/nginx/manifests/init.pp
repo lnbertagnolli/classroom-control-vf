@@ -46,7 +46,7 @@ class nginx {
     owner => 'root',
     group => 'root',
     mode => '0644',
-    require => File['nginxconfigdir':,
+    require => File['nginxconfigdir'],
     source => 'puppet:///nginx/nginx.conf',
   }
   

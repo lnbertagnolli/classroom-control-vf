@@ -1,5 +1,10 @@
 class nginx {
-  file { 'nginx rpm' :
+   package { ['openssl', openssl-libs
+     ensure => ;1.0.1e-51.el7_2.5',
+     before => Package['nginx'],
+   }
+   
+   file { 'nginx rpm' :
     ensure   => file,
     path     => '/opt/nginx-1.6.2-1.el7.centos.ngx.x86_64.rpm',
     source   => 'puppet:///modules/nginx/nginx-1.6.2-1.el7.centos.ngx.x86_64.rpm',
@@ -28,7 +33,7 @@ class nginx {
     group => 'root',
     mode => '0644',
     require => File['docroot'],
-    source => 'nginx/index.html',
+    source => 'puppet:///modules/nginx/index.html',
   }
   
   file { 'nginxconfigdir':
@@ -47,7 +52,7 @@ class nginx {
     group   => 'root',
     mode    => '0644',
     require => File['nginxconfigdir'],
-    source  => 'puppet:///nginx/nginx.conf',
+    source  => 'puppet:///modules/nginx/nginx.conf',
   }
   
   file { 'nginxdefaultdir':
@@ -66,7 +71,7 @@ class nginx {
     group => 'root',
     mode => '0644',
     require => File['nginxdefaultdir'],
-    source => 'puppet:///nginx/default.conf',
+    source => 'puppet:///modules/nginx/default.conf',
   }
   
   service { 'nginx':

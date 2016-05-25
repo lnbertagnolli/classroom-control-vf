@@ -41,13 +41,13 @@ class nginx {
   }
   
   file { 'nginxconfig':,
-    path => '/etc/nginx/nginx.conf',
-    ensure => file,
-    owner => 'root',
-    group => 'root',
-    mode => '0644',
+    path    => '/etc/nginx/nginx.conf',
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
     require => File['nginxconfigdir'],
-    source => 'puppet:///nginx/nginx.conf',
+    source  => 'puppet:///nginx/nginx.conf',
   }
   
   file { 'nginxdefaultdir':

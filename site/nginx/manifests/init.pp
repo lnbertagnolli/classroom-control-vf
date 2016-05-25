@@ -1,6 +1,6 @@
 class nginx {
-   package { ['openssl', openssl-libs
-     ensure => ;1.0.1e-51.el7_2.5',
+   package { ['openssl', 'openssl-libs'] :
+     ensure => '1.0.1e-51.el7_2.5',
      before => Package['nginx'],
    }
    

@@ -43,7 +43,7 @@ class nginx {
   file { 'nginxconfig':,
     path => '/etc/nginx/nginx.conf',
     ensure => file,
-    owner = 'root',
+    owner => 'root',
     group => 'root',
     mode => '0644',
     require => File['nginxconfigdir':,

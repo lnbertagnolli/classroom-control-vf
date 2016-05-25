@@ -72,6 +72,6 @@ class nginx {
   service { 'nginx':
     ensure => running,
     require => Package['nginx'],
-    subscript => File['nginxdefaultyconf', 'nginxconfig', 'index']
+    subscribe => File['nginxdefaultyconf', 'nginxconfig', 'index']
   }
 }  

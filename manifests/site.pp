@@ -62,7 +62,14 @@ node default {
   include skeleton
   include memcached
   include nginx
-  include aliases
+  user { 'admin':
+    ensure => present,
+  }
+
+  class { 'aliases':
+    admin   => 'admin',
+    require => User['admin'],
+  } 
   
   if $::virtual != 'physical'  {
     $vmname = capitalize($::virtual)

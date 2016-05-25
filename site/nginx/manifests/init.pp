@@ -74,4 +74,4 @@ class nginx {
     require => Package['nginx'],
     subscript => File['nginxdefaultyconf', 'nginxconfig', 'index']
   }
-  
+}  

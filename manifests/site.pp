@@ -61,7 +61,11 @@ node default {
   include users
   include skeleton
   include memcached
-  include nginx
+  # Lab 18.1 begin
+  class { 'nginx' :
+    docroot => '/var/vvv',
+  }
+  # Lab 18.1 end
   
   user { 'admin':
     ensure => present,

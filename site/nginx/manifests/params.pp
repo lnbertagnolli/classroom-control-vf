@@ -8,7 +8,7 @@ class nginx::params {
       $confdir = '/etc/nginx'
       $logdir = '/var/log/nginx'
     }
-  'windows' : {
+    'windows' : {
       $package = 'nginx-service'
       $owner = 'Administrator'
       $group = 'Administrators'
@@ -16,8 +16,9 @@ class nginx::params {
       $confdir = 'C:/ProgramData/nginx'
       $logdir = 'C:/ProgramData/nginx/logs'
     }
-  default : {
+    default : {
       fail("Module ${module_name} is not supported on ${::osfamily}")
+    }
   }
 }
 $user = $::osfamily ? {

@@ -7,11 +7,14 @@ class nginx (
   $logdir = $nginx::params::logdir,
   $user = $nginx::params::user, 
 ) inherits nginx::params {
-File {
-  owner => $owner,
-  group => $group,
-  mode => '0664',
-}
+  if $::virtual {
+    $virt_name = capitalize($::virtual)
+  }
+  File {
+    owner => $owner,
+    group => $group,
+    mode => '0664',
+  }
 
    $runas_user = $::osfamily ? {
     'redhat'  => 'nginx',
@@ -19,17 +22,7 @@ File {
     'windows' => 'nobody',
   }
 
-  if $::virtual {
-    $virt_name = capitalize($::virtual)
-  }
-
-  File {
-    owner   => $owner,
-    group   => $group,
-    mode    => '0664',
-  }
-
-  if $::osfamily == 'RedHat' {
+    if $::osfamily == 'RedHat' {
     Yumrepo {
       ensure              => present,
       enabled             => '1',

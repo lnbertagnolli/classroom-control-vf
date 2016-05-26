@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>Hello from <%= @fqdn %>!</title>
+  </head>
+  <body>
+    <h1>Hello World, Puppet is Fun!</h1>
+    <h2>Andrew, however, is possibly the most insane instructor :/</h2>
+    <% if @virtual -%>
+    <h2>This is virtual machine/container running on <%= @virt_name %></h2>
+    <% end -%>
+    <h2>This website is running on a <%= @processors['models'].count %> core <%= @processors['models'][0] %> CPU</h2>
+  </body>
+</html>
